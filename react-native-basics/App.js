@@ -1,11 +1,32 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 export default function App() {
   return (
-    <View style={{ marginTop: 50 }}>
-      <Text>Hello React Native 🚀</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome 🚀</Text>
 
-      <Button title="Click Me" onPress={() => alert("Button Pressed")} />
+      <Text style={styles.subtitle}>My first styled app</Text>
+
+      <View style={{ marginTop: 10 }}>
+        <Button title="Click Me" onPress={() => alert("Styled")} />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#e6f2ff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "gray",
+  },
+});
