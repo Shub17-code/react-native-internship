@@ -1,15 +1,48 @@
-import { View, Text, Button, StyleSheet } from "react-native";
+import { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  FlatList,
+  StyleSheet,
+} from "react-native";
 
 export default function App() {
+  const [task, setTask] = useState("");
+  const [taskList, setTaskList] = useState([]);
+
+  const addTask = () => {
+    if (task.trim() === "") return;
+
+    setTaskList([...taskList, { id: Date.now().toString(), text: task }]);
+    setTask("");
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome 🚀</Text>
+      <Text style={styles.title}>To-Do App 📝</Text>
 
-      <Text style={styles.subtitle}>My first styled app</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter task"
+        value={task}
+        onChangeText={setTask}
+      />
 
-      <View style={{ marginTop: 10 }}>
-        <Button title="Click Me" onPress={() => alert("Styled")} />
+      <View style={{ marginBottom: 10 }}>
+        <Button title="Add Task" onPress={addTask} />
       </View>
+
+      <FlatList
+        data={taskList}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.taskBox}>
+            <Text>{item.text}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 }
@@ -17,16 +50,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e6f2ff",
-    justifyContent: "center",
-    alignItems: "center",
+    padding: 20,
+    marginTop: 50,
   },
   title: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: "bold",
+    marginBottom: 15,
   },
-  subtitle: {
-    fontSize: 16,
-    color: "gray",
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    marginBottom: 10,
+  },
+  taskBox: {
+    padding: 10,
+    backgroundColor: "#e6f2ff",
+    marginTop: 5,
+    borderRadius: 6,
   },
 });
