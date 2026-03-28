@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import EventList from "./screens/EventList";
-import EventDetails from "./screens/EventDetails";
+import EventDetails from "./screens/Eventdetail";
 
 const Stack = createNativeStackNavigator();
 

@@ -7,10 +7,7 @@ export default function EventDetails({ route, navigation }) {
     <View style={{ marginTop: 50 }}>
       <Text style={{ fontSize: 22 }}>{event.name}</Text>
 
-      <Button
-        title="Book Event"
-        onPress={() => alert("Event Booked!")}
-      />
+      <Button title="Book Event" onPress={() => alert("Event Booked!")} />
 
       <Button title="Go Back" onPress={() => navigation.goBack()} />
     </View>
